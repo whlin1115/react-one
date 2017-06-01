@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'dva';
-import styles from './Home.css';
+import './index.css';
 
 function Home() {
   return (
-    <div className={styles.normal}>
+    <div className="normal">
       Route Component: Home
     </div>
   );
