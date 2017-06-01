@@ -30,12 +30,12 @@ const Routers = function ({ history, app }) {
             }, 'home');
           },
         }, {
-          path: 'read',
+          path: 'essay',
           getComponent(nextState, cb) {
             require.ensure([], require => {
-              registerModel(app, require('./models/read'));
-              cb(null, require('./routes/read'));
-            }, 'read');
+              registerModel(app, require('./models/essay'));
+              cb(null, require('./routes/essay'));
+            }, 'essay');
           },
         }, {
           path: 'music',
@@ -49,7 +49,7 @@ const Routers = function ({ history, app }) {
           path: 'video',
           getComponent(nextState, cb) {
             require.ensure([], require => {
-              registerModel(app, require('./models/read'));
+              registerModel(app, require('./models/video'));
               cb(null, require('./routes/video'));
             }, 'video');
           },

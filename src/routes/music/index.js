@@ -9,8 +9,6 @@ function Music() {
   return (
     <div className="normal">
       <Wrap />
-      <Wrap />
-      <Wrap />
     </div>
   );
 }

@@ -6,8 +6,8 @@ export const Footers = [{
   lable: '主页',
   title: '一个',
 }, {
-  key: 'read',
-  path: 'read',
+  key: 'essay',
+  path: 'essay',
   lable: '阅读',
   title: '一个阅读',
 }, {

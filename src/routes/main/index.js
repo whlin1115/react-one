@@ -6,25 +6,33 @@ import './index.css';
 
 const { Header, Footer } = Layout;
 
-function Main({ children, title, toggle }) {
-  const headerProps = {
-    title,
-  };
+class Main extends React.PureComponent {
+  componentDidMount() {
+    this.props.init();
+  }
 
-  const footerProps = {
-    toggle,
-    footers: Footers,
-  };
+  render() {
+    const { title, toggle, children } = this.props;
 
-  return (
-    <div className="normal">
-      <Header {...headerProps} />
-      <div className="content">
-        {children}
+    const headerProps = {
+      title,
+    };
+
+    const footerProps = {
+      toggle,
+      footers: Footers,
+    };
+
+    return (
+      <div className="normal">
+        <Header {...headerProps} />
+        <div className="content">
+          {children}
+        </div>
+        <Footer {...footerProps} />
       </div>
-      <Footer {...footerProps} />
-    </div>
-  );
+    );
+  }
 }
 
 function mapStateToProps(state) {
@@ -40,6 +48,11 @@ function mapDispatchToProps(dispatch) {
       dispatch({
         type: 'main/toggle',
         payload: text,
+      });
+    },
+    init() {
+      dispatch({
+        type: 'main/idlist',
       });
     },
   };

@@ -1,6 +1,6 @@
 /*eslint linebreak-style: ["error", "windows"]*/
 import Wrap from './Wrap';
 import Music from './Music';
-import Photo from './Photo';
+import Media from './Media';
 
-export { Wrap, Music, Photo };
+export { Wrap, Music, Media };
