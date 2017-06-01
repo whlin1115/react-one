@@ -1,22 +1,48 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Layout } from '../../components';
+import { Footers } from '../../config';
 import './index.css';
 
 const { Header, Footer } = Layout;
 
-function Main({ children }) {
+function Main({ children, title, toggle }) {
+  const headerProps = {
+    title,
+  };
+
+  const footerProps = {
+    toggle,
+    footers: Footers,
+  };
+
   return (
     <div className="normal">
-      <Header />
-      {children}
-      <Footer />
+      <Header {...headerProps} />
+      <div className="content">
+        {children}
+      </div>
+      <Footer {...footerProps} />
     </div>
   );
 }
 
-function mapStateToProps() {
-  return {};
+function mapStateToProps(state) {
+  const { title } = state.main;
+  return {
+    title,
+  };
 }
 
-export default connect(mapStateToProps)(Main);
+function mapDispatchToProps(dispatch) {
+  return {
+    toggle(text) {
+      dispatch({
+        type: 'main/toggle',
+        payload: text,
+      });
+    },
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

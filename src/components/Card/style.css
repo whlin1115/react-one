@@ -1,0 +1,58 @@
+.wrap {
+    background-color: #fff;
+    padding: 8px 18px 12px 18px;
+    margin-bottom: 10px;
+}
+
+.tips {
+    margin: 6px 0;
+    text-align: center;
+    color: #999;
+    font-size: 10px;
+}
+
+.wrap .title {
+    margin: 8px 0;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.wrap .author {
+    margin: 8px 0 12px 0;
+    color: #999;
+    font-size: 12px;
+}
+
+.wrap .sub {
+    line-height: 24px;
+    margin: 8px 0;
+    color: #999;
+    font-size: 12px;
+}
+
+.bottom {
+    margin-top: 24px;
+}
+
+.bottom,
+.bottom .operate {
+    font-size: 12px;
+    color: #999;
+    display: flex;
+    justify-content: space-between;
+}
+
+.bottom .operate .praise {
+    margin-right: 8px;
+}
+
+.music {
+    background-color: #fff;
+    height: 50px;
+}
+
+.photo img {
+    background-color: #fff;
+    width: 100%;
+    height: 32vh;
+}

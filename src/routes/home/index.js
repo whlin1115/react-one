@@ -1,11 +1,16 @@
 import React from 'react';
 import { connect } from 'dva';
+import { Card } from '../../components';
 import './index.css';
+
+const { Wrap } = Card;
 
 function Home() {
   return (
     <div className="normal">
-      Route Component: Home
+      <Wrap />
+      <Wrap />
+      <Wrap />
     </div>
   );
 }

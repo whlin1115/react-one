@@ -1,26 +1,64 @@
 /*eslint linebreak-style: ["error", "windows"]*/
 import React from 'react';
-import { Router, Route, IndexRedirect } from 'dva/router';
-import Main from './routes/main/index';
-import Home from './routes/home/index';
-import Login from './routes/login/index';
-import Music from './routes/music/index';
-import Read from './routes/read/index';
-import Video from './routes/video/index';
+import { Router } from 'dva/router';
+import Main from './routes/main';
 
-function RouterConfig({ history }) {
-  return (
-    <Router history={history}>
-      <Route path="/login" component={Login} />
-      <Route path="/" component={Main} >
-        <IndexRedirect to="/home" />
-        <Route path="/home" component={Home} />
-        <Route path="/music" component={Music} />
-        <Route path="/read" component={Read} />
-        <Route path="/video" component={Video} />
-      </Route>
-    </Router>
-  );
-}
+const registerModel = (app, model) => {
+  if (!(app._models.filter(m => m.namespace === model.namespace).length === 1)) {
+    app.model(model);
+  }
+};
 
-export default RouterConfig;
+const Routers = function ({ history, app }) {
+  const routes = [
+    {
+      path: '/',
+      component: Main,
+      getIndexRoute(nextState, cb) {
+        require.ensure([], require => {
+          registerModel(app, require('./models/home'));
+          cb(null, { component: require('./routes/home') });
+        }, 'dashboard');
+      },
+      childRoutes: [
+        {
+          path: 'home',
+          getComponent(nextState, cb) {
+            require.ensure([], require => {
+              registerModel(app, require('./models/home'));
+              cb(null, require('./routes/home'));
+            }, 'home');
+          },
+        }, {
+          path: 'read',
+          getComponent(nextState, cb) {
+            require.ensure([], require => {
+              registerModel(app, require('./models/read'));
+              cb(null, require('./routes/read'));
+            }, 'read');
+          },
+        }, {
+          path: 'music',
+          getComponent(nextState, cb) {
+            require.ensure([], require => {
+              registerModel(app, require('./models/music'));
+              cb(null, require('./routes/music'));
+            }, 'music');
+          },
+        }, {
+          path: 'video',
+          getComponent(nextState, cb) {
+            require.ensure([], require => {
+              registerModel(app, require('./models/read'));
+              cb(null, require('./routes/video'));
+            }, 'video');
+          },
+        },
+      ],
+    },
+  ];
+
+  return <Router history={history} routes={routes} />;
+};
+
+export default Routers;

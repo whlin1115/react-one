@@ -1,3 +1,10 @@
+.normal {}
 
-.normal {
+body {
+    background-color: #f8f8f8;
+    margin: 0;
+}
+
+.content {
+    padding: 48px 0;
 }

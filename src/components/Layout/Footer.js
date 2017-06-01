@@ -1,10 +1,17 @@
 import React from 'react';
+import { Link } from 'dva/router';
 import './style.css';
 
-function Footer() {
+function Footer({ footers, toggle }) {
   return (
-    <div className="normal">
-      Component: Footer
+    <div className="footer">
+      {
+        footers.map((nav) => (
+          <div className="button" key={nav.key}>
+            <Link to={`${nav.path}`} activeStyle={{ color: '#000' }} onClick={() => { toggle(nav.title); }}>{nav.lable}</Link>
+          </div>
+        ))
+      }
     </div>
   );
 }
