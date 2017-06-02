@@ -1,21 +1,35 @@
 import React from 'react';
+import Photo from './Photo';
 import Media from './Media';
+import { formatDate } from '../../utils/tool';
 import './style.css';
 
 function Wrap({ lists }) {
   return (
     lists && lists.length > 0 ?
-      <div>
+      <div className="nomal">
         {
           lists.map((list, index) => (
             <div className="wrap" key={index} >
-              <p className="tips">- {list.share_list.wx.title.split('|')[0]} -</p>
+              <p className="tag">- {list.share_list.wx.title.split('|')[0]} -</p>
               <h4 className="title">{list.title}</h4>
               <p className="author">文 / {list.author.user_name}</p>
-              <Media url={list.img_url} />
+              {
+                list.category === '4' ?
+                  <div className="normal">
+                    <Media media={list} />
+                    <p className="audio">{list.music_name} . {list.audio_author} | {list.audio_album}</p>
+                  </div>
+                : <Photo photo={list} />
+              }
               <p className="sub"> {list.forward} </p>
+              {
+                list.category === '5' ?
+                  <p className="subtitle">---《{list.subtitle}》</p>
+                : null
+              }
               <div className="bottom">
-                <div className="time">1小时前</div>
+                <div className="time">{formatDate(list.last_update_date)}</div>
                 <div className="operate">
                   <div className="count">{list.like_count}</div>
                   <div className="praise">点赞</div>

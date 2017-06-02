@@ -7,7 +7,7 @@ function Footer({ footers, toggle }) {
     <div className="footer">
       {
         footers.map((nav) => (
-          <div className="button" key={nav.key}>
+          <div className="button" key={nav.key} >
             <Link to={`${nav.path}`} activeStyle={{ color: '#000' }} onClick={() => { toggle(nav.title); }}>{nav.lable}</Link>
           </div>
         ))

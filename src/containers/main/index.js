@@ -7,7 +7,7 @@ import './index.css';
 const { Header, Footer } = Layout;
 
 class Main extends React.PureComponent {
-  componentDidMount() {
+  componentWillMount() {
     this.props.init();
   }
 

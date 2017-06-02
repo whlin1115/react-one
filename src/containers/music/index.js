@@ -5,16 +5,38 @@ import './index.css';
 
 const { Wrap } = Card;
 
-function Music() {
-  return (
-    <div className="normal">
-      <Wrap />
-    </div>
-  );
+class Music extends React.PureComponent {
+  componentDidMount() {
+    this.props.init();
+  }
+
+  render() {
+    const { data } = this.props;
+    const wrapProps = {
+      lists: data,
+    };
+
+    return (
+      <Wrap {...wrapProps} />
+    );
+  }
 }
 
-function mapStateToProps() {
-  return {};
+function mapStateToProps(state) {
+  const { data } = state.music;
+  return {
+    data,
+  };
 }
 
-export default connect(mapStateToProps)(Music);
+function mapDispatchToProps(dispatch) {
+  return {
+    init() {
+      dispatch({
+        type: 'music/musiclist',
+      });
+    },
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Music);

@@ -16,6 +16,7 @@
 }
 
 .footer, .header{
+    z-index: 999;
     position: fixed;
     display: flex;
     height: 48px;

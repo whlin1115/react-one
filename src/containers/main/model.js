@@ -17,9 +17,6 @@ export default {
   effects: {
     *idlist({ payload = {} }, { call, put }) {
       const { data } = yield call(service.queryIdlist);
-      if (data.res !== 0) {
-        throw data.res;
-      }
       yield put({ type: 'idlist/success', payload: data.data });
     },
   },

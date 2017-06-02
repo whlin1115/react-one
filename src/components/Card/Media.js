@@ -1,10 +1,11 @@
 import React from 'react';
 import './style.css';
 
-function Media({ url }) {
+function Media({ media }) {
   return (
-    <div className="media">
-      <img src={url} alt="media" />
+    <div className="media photo">
+      <p className="text">STORIES OF MUSIC</p>
+      <img src={media.img_url} alt="media" />
     </div>
   );
 }
