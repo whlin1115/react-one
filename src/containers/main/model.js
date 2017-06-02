@@ -1,4 +1,4 @@
-import * as service from '../services/main';
+import * as service from './service';
 
 export default {
   namespace: 'main',

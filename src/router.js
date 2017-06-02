@@ -1,7 +1,7 @@
 /*eslint linebreak-style: ["error", "windows"]*/
 import React from 'react';
 import { Router } from 'dva/router';
-import Main from './routes/main';
+import Main from './containers/main/index';
 
 const registerModel = (app, model) => {
   if (!(app._models.filter(m => m.namespace === model.namespace).length === 1)) {
@@ -16,8 +16,8 @@ const Routers = function ({ history, app }) {
       component: Main,
       getIndexRoute(nextState, cb) {
         require.ensure([], require => {
-          registerModel(app, require('./models/home'));
-          cb(null, { component: require('./routes/home') });
+          registerModel(app, require('./containers/main/model'));
+          cb(null, { component: require('./containers/main/index') });
         }, 'dashboard');
       },
       childRoutes: [
@@ -25,33 +25,33 @@ const Routers = function ({ history, app }) {
           path: 'home',
           getComponent(nextState, cb) {
             require.ensure([], require => {
-              registerModel(app, require('./models/home'));
-              cb(null, require('./routes/home'));
+              registerModel(app, require('./containers/home/model'));
+              cb(null, require('./containers/home/index'));
             }, 'home');
           },
         }, {
           path: 'essay',
           getComponent(nextState, cb) {
             require.ensure([], require => {
-              registerModel(app, require('./models/essay'));
-              cb(null, require('./routes/essay'));
+              registerModel(app, require('./containers/essay/model'));
+              cb(null, require('./containers/essay/index'));
             }, 'essay');
           },
         }, {
           path: 'music',
           getComponent(nextState, cb) {
             require.ensure([], require => {
-              registerModel(app, require('./models/music'));
-              cb(null, require('./routes/music'));
+              registerModel(app, require('./containers/music/model'));
+              cb(null, require('./containers/music/index'));
             }, 'music');
           },
         }, {
-          path: 'video',
+          path: 'movie',
           getComponent(nextState, cb) {
             require.ensure([], require => {
-              registerModel(app, require('./models/video'));
-              cb(null, require('./routes/video'));
-            }, 'video');
+              registerModel(app, require('./containers/movie/model'));
+              cb(null, require('./containers/movie/index'));
+            }, 'movie');
           },
         },
       ],

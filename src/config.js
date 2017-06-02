@@ -16,8 +16,8 @@ export const Footers = [{
   lable: '音乐',
   title: '一个音乐',
 }, {
-  key: 'video',
-  path: 'video',
+  key: 'movie',
+  path: 'movie',
   lable: '视频',
   title: '一个视频',
 }];
