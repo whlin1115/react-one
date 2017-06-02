@@ -1,64 +1,28 @@
 /*eslint linebreak-style: ["error", "windows"]*/
 import React from 'react';
-import { Router } from 'dva/router';
-import Main from './containers/main/index';
+import { Router, Route, IndexRedirect } from 'dva/router';
+import Main from './containers/main';
+import Login from './containers/login';
+import Home from './containers/home';
+import Essay from './containers/essay';
+import Music from './containers/music';
+import Movie from './containers/movie';
+import Detail from './containers/detail';
 
-const registerModel = (app, model) => {
-  if (!(app._models.filter(m => m.namespace === model.namespace).length === 1)) {
-    app.model(model);
-  }
-};
-
-const Routers = function ({ history, app }) {
-  const routes = [
-    {
-      path: '/',
-      component: Main,
-      getIndexRoute(nextState, cb) {
-        require.ensure([], require => {
-          registerModel(app, require('./containers/main/model'));
-          cb(null, { component: require('./containers/main/index') });
-        }, 'dashboard');
-      },
-      childRoutes: [
-        {
-          path: 'home',
-          getComponent(nextState, cb) {
-            require.ensure([], require => {
-              registerModel(app, require('./containers/home/model'));
-              cb(null, require('./containers/home/index'));
-            }, 'home');
-          },
-        }, {
-          path: 'essay',
-          getComponent(nextState, cb) {
-            require.ensure([], require => {
-              registerModel(app, require('./containers/essay/model'));
-              cb(null, require('./containers/essay/index'));
-            }, 'essay');
-          },
-        }, {
-          path: 'music',
-          getComponent(nextState, cb) {
-            require.ensure([], require => {
-              registerModel(app, require('./containers/music/model'));
-              cb(null, require('./containers/music/index'));
-            }, 'music');
-          },
-        }, {
-          path: 'movie',
-          getComponent(nextState, cb) {
-            require.ensure([], require => {
-              registerModel(app, require('./containers/movie/model'));
-              cb(null, require('./containers/movie/index'));
-            }, 'movie');
-          },
-        },
-      ],
-    },
-  ];
-
-  return <Router history={history} routes={routes} />;
-};
+function Routers({ history }) {
+  return (
+    <Router history={history}>
+      <Route path="/login" component={Login} />
+      <Route path="/" component={Main} >
+        <IndexRedirect to="home" />
+        <Route path="home" component={Home} />
+        <Route path="essay" component={Essay} />
+        <Route path="music" component={Music} />
+        <Route path="movie" component={Movie} />
+      </Route>
+      <Route path="detail/:category/:id" component={Detail} />
+    </Router>
+  );
+}
 
 export default Routers;

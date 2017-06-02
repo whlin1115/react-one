@@ -1,6 +1,7 @@
 /*eslint linebreak-style: ["error", "windows"]*/
 import dva from 'dva';
-import './index.css';
+import * as models from './model';
+import './style.css';
 
 // 1. Initialize
 const app = dva();
@@ -9,7 +10,7 @@ const app = dva();
 // app.use({});
 
 // 3. Model
-app.model(require('./containers/main/model'));
+Object.keys(models).forEach(key => app.model(models[key]));
 
 // 4. Router
 app.router(require('./router'));

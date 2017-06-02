@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import './index.css';
+import './style.css';
 
 function Login() {
   return (

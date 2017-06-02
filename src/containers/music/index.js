@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Card } from '../../components';
-import './index.css';
+import './style.css';
 
 const { Wrap } = Card;
 
