@@ -1,6 +1,6 @@
 /*eslint linebreak-style: ["error", "windows"]*/
 
-export { default as essay } from './containers/essay/model';
+export { default as read } from './containers/read/model';
 export { default as home } from './containers/home/model';
 export { default as login } from './containers/login/model';
 export { default as main } from './containers/main/model';

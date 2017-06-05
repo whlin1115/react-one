@@ -1,13 +1,16 @@
 import React from 'react';
 import { connect } from 'dva';
+import { Detail } from '../../components';
 import './style.css';
 
-class Detail extends React.PureComponent {
+const { Content } = Detail;
+
+class Details extends React.PureComponent {
   componentDidMount() {
     const { params: { category, id } } = this.props;
     switch (category) {
       case '1':
-        this.props.essay(id);
+        this.props.read(id);
         break;
       case '2':
         this.props.serial(id);
@@ -22,52 +25,61 @@ class Detail extends React.PureComponent {
         this.props.movie(id);
         break;
       default:
-        this.props.essay(id);
+        this.props.read(id);
     }
   }
 
   render() {
+    const { detail } = this.props;
+    const detailProps = {
+      detail,
+    };
     return (
-      <div>test</div>
+      <Content {...detailProps} />
     );
   }
 }
 
 function mapStateToProps(state) {
-  const { data } = state.detail;
+  const { detail } = state.detail;
   return {
-    data,
+    detail,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    essay() {
+    read(id) {
       dispatch({
-        type: 'detail/essayDetail',
+        type: 'detail/readDetail',
+        payload: id,
       });
     },
-    serial() {
+    serial(id) {
       dispatch({
         type: 'detail/serialDetail',
+        payload: id,
       });
     },
-    issue() {
+    issue(id) {
       dispatch({
         type: 'detail/issueDetail',
+        payload: id,
       });
     },
-    music() {
+    music(id) {
       dispatch({
         type: 'detail/musicDetail',
+        payload: id,
       });
     },
-    movie() {
+    movie(id) {
       dispatch({
         type: 'detail/movieDetail',
+        payload: { id },
       });
     },
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Detail);
+export default connect(mapStateToProps, mapDispatchToProps)(Details);

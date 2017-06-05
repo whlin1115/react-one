@@ -5,7 +5,7 @@ import './style.css';
 
 const { Wrap } = Card;
 
-class Essay extends React.PureComponent {
+class Read extends React.PureComponent {
   componentDidMount() {
     this.props.init();
   }
@@ -23,7 +23,7 @@ class Essay extends React.PureComponent {
 }
 
 function mapStateToProps(state) {
-  const { data } = state.essay;
+  const { data } = state.read;
   return {
     data,
   };
@@ -33,10 +33,10 @@ function mapDispatchToProps(dispatch) {
   return {
     init() {
       dispatch({
-        type: 'essay/readinglist',
+        type: 'read/readinglist',
       });
     },
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Essay);
+export default connect(mapStateToProps, mapDispatchToProps)(Read);

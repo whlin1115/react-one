@@ -4,7 +4,7 @@ import { Router, Route, IndexRedirect } from 'dva/router';
 import Main from './containers/main';
 import Login from './containers/login';
 import Home from './containers/home';
-import Essay from './containers/essay';
+import Read from './containers/read';
 import Music from './containers/music';
 import Movie from './containers/movie';
 import Detail from './containers/detail';
@@ -16,7 +16,7 @@ function Routers({ history }) {
       <Route path="/" component={Main} >
         <IndexRedirect to="home" />
         <Route path="home" component={Home} />
-        <Route path="essay" component={Essay} />
+        <Route path="read" component={Read} />
         <Route path="music" component={Music} />
         <Route path="movie" component={Movie} />
       </Route>

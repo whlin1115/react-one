@@ -1,7 +1,7 @@
 import * as service from './service';
 
 export default {
-  namespace: 'essay',
+  namespace: 'read',
   state: {
     data: [],
   },

@@ -12,7 +12,7 @@ function Wrap({ lists }) {
         {
           lists.map((list, index) => (
             <div className="wrap" key={index} >
-              <Link to="detail">
+              <Link to={'detail/'.concat(list.category).concat('/').concat(list.item_id)}>
                 <p className="tag">- {list.share_list.wx.title.split('|')[0]} -</p>
                 <h4 className="title">{list.title}</h4>
                 <p className="author">文 / {list.author.user_name}</p>

@@ -8,12 +8,12 @@ export const Footers = [{
   title: '一个',
   image: '../../assets/home.png',
 }, {
-  key: 'essay',
-  path: 'essay',
+  key: 'read',
+  path: 'read',
   icon: 'icon iconfont icon-book',
   lable: '阅读',
   title: '一个阅读',
-  image: '../../assets/essay.png',
+  image: '../../assets/read.png',
 }, {
   key: 'music',
   path: '/music',
