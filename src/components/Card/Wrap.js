@@ -34,8 +34,8 @@ function Wrap({ lists }) {
                   <div className="time">{formatDate(list.last_update_date)}</div>
                   <div className="operate">
                     <div className="count">{list.like_count}</div>
-                    <div className="praise">点赞</div>
-                    <div className="share">分享</div>
+                    <div className="praise"><i className="icon iconfont icon-dianzan1" /></div>
+                    <div className="share"><i className="icon iconfont icon-amis-share" /></div>
                   </div>
                 </div>
               </Link>

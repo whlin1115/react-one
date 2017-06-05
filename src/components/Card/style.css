@@ -19,7 +19,7 @@
     text-align: center;
 }
 
-.subBox {
+.box {
     padding: 8px 18px 12px 18px;
 }
 
@@ -103,7 +103,7 @@
 
 .bottom .operate .praise,
 .bottom .operate .count {
-    margin-right: 8px;
+    margin-right: 12px;
 }
 
 .audio {
@@ -115,7 +115,7 @@
     width: 100%;
     height: 0;
     margin: 5px 0;
-    border-bottom: #f6f6f6 8px dotted;
+    border-bottom: #f1f1f1 8px dotted;
 }
 
 .photo {
@@ -143,10 +143,19 @@
     justify-content: space-around;
 }
 
-.media img {
+.media .cover {
     display: block;
     width: 200px;
     height: 200px;
+    border-radius: 50%;
+}
+
+.media .play {
+    position: absolute;
+    display: block;
+    top: 36%;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
 }
 

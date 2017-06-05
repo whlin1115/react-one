@@ -5,13 +5,13 @@ function Header({ title }) {
   return (
     <div className="header">
       <div className="button">
-        用户
+        <i className="icon iconfont icon-user" />
       </div>
       <div className="title">
         {title}
       </div>
       <div className="button">
-        搜索
+        <i className="icon iconfont icon-search" />
       </div>
     </div>
   );

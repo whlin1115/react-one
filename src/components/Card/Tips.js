@@ -10,15 +10,15 @@ function Tips({ photo, weather }) {
         <p className="weather">{weather.wind_direction}</p>
         <Photo photo={photo} />
         <p className="author">{photo.title} | {photo.pic_info}</p>
-        <div className="subBox">
+        <div className="box">
           <p className="sub">{photo.forward}</p>
           <p className="title">{photo.words_info}</p>
           <div className="bottom">
             <div className="time">小记</div>
             <div className="operate">
               <div className="count">{photo.like_count}</div>
-              <div className="praise">点赞</div>
-              <div className="share">分享</div>
+              <div className="praise"><i className="icon iconfont icon-dianzan1" /></div>
+              <div className="share"><i className="icon iconfont icon-amis-share" /></div>
             </div>
           </div>
         </div>

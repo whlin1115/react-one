@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'dva';
 import { Layout } from '../../components';
 import { Footers } from '../../config';
+import '../../assets/font/iconfont.css';
 import './style.css';
 
 const { Header, Footer } = Layout;
