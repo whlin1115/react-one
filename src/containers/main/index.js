@@ -8,9 +8,6 @@ import './style.css';
 const { Header, Footer } = Layout;
 
 class Main extends React.PureComponent {
-  componentWillMount() {
-    this.props.init();
-  }
 
   render() {
     const { title, toggle, children } = this.props;
@@ -49,11 +46,6 @@ function mapDispatchToProps(dispatch) {
       dispatch({
         type: 'main/toggle',
         payload: text,
-      });
-    },
-    init() {
-      dispatch({
-        type: 'main/idlist',
       });
     },
   };

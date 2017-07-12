@@ -8,24 +8,22 @@ const { Wrap, Tips } = Card;
 class Home extends React.PureComponent {
 
   componentDidMount() {
-    const { idlist } = this.props;
-    const id = idlist[0] || '4142';
-    this.props.init(id);
+    this.props.init();
   }
 
   render() {
-    const { content_list, weather } = this.props;
-    const photo = content_list[0];
-    const lists = content_list.slice(1);
-
-    const wrapProps = {
-      lists,
-    };
+    const { data } = this.props;
+    const { weather, date, content_list } = data;
 
     const tipsProps = {
-      photo,
+      photo: content_list && content_list[0],
       weather,
     };
+
+     const wrapProps = {
+      lists: content_list && content_list.slice(1),
+    };
+
     return (
       <div className="home">
         <Tips {...tipsProps} />
@@ -36,16 +34,18 @@ class Home extends React.PureComponent {
 }
 
 function mapStateToProps(state) {
-  const { id, weather, date, content_list } = state.home;
-  const { idlist } = state.main;
-  return {
-    id, weather, date, content_list, idlist,
-  };
+  const { data } = state.home;
+  return { data };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    init(id) {
+    init() {
+      dispatch({
+        type: 'home/idlist',
+      });
+    },
+    onelist(id) {
       dispatch({
         type: 'home/onelist',
         payload: id,

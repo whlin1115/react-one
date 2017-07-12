@@ -27,7 +27,7 @@ function Wrap({ lists }) {
                 <p className="sub"> {list.forward} </p>
                 {
                   list.category === '5' ?
-                    <p className="subtitle">---《{list.subtitle}》</p>
+                    <p className="subtitle">——《{list.subtitle}》</p>
                   : null
                 }
                 <div className="bottom">

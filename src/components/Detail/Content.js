@@ -10,7 +10,10 @@ function Content({ detail }) {
       <Header />
       <div className="text-content">
         <h2 className="title">{detail.hp_title}</h2>
-        <div dangerouslySetInnerHTML={{ __html: detail.hp_content }} />
+        {
+          !detail.data ? <div dangerouslySetInnerHTML={{ __html: detail.hp_content || detail.story }} />
+          : detail.data.map((data,index) => <div key={index} dangerouslySetInnerHTML={{ __html: data.content }} />)
+        }
       </div>
       <Footer />
     </div>
